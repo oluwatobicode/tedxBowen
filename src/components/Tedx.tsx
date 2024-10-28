@@ -1,6 +1,6 @@
 const Tedx = () => {
   return (
-    <div className="tedx-hero lg:h-screen h-[65vh]">
+    <div className="tedx-hero lg:h-screen h-[75vh]">
       <div className="flex flex-col items-start p-10 space-y-6">
         <div className="w-full">
           <h1 className="text-white lg:text-[38px] text-[20px] font-bold lg:leading-[44.21px] leading-[18.42px] text-center lg:text-right">
