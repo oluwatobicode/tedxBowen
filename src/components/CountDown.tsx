@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+// Define the shape of the timeLeft object
 interface TimeLeft {
   days: number;
   hours: number;
@@ -8,12 +9,18 @@ interface TimeLeft {
 }
 
 const CountDown: React.FC = () => {
+  // Function to calculate time left
   const calculateTimeLeft = (): TimeLeft => {
-    const eventDate: Date = new Date("2024-11-30T00:00:00");
-    const now: Date = new Date();
-    const difference: number = eventDate.getTime() - now.getTime();
+    const eventDate = new Date("2024-11-30T00:00:00");
+    const now = new Date();
+    const difference = eventDate.getTime() - now.getTime();
 
-    let timeLeft: Partial<TimeLeft> = {};
+    let timeLeft: TimeLeft = {
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    };
 
     if (difference > 0) {
       timeLeft = {
@@ -24,28 +31,23 @@ const CountDown: React.FC = () => {
       };
     }
 
-    return {
-      days: timeLeft.days || 0,
-      hours: timeLeft.hours || 0,
-      minutes: timeLeft.minutes || 0,
-      seconds: timeLeft.seconds || 0
-    };
+    return timeLeft;
   };
 
+  // State to hold the time left
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
 
   useEffect(() => {
-    const timer: NodeJS.Timeout = setInterval(() => {
+    const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    // Cleanup the interval when the component unmounts
-    return () => clearInterval(timer);
+    return () => clearInterval(timer); // Cleanup the interval when the component unmounts
   }, []);
 
   return (
     <div>
-      <div className="p-10 lg:space-y-6 space-y-10  bg-[#FF0000] flex lg:flex-row flex-col items-center justify-between">
+      <div className="p-10 lg:space-y-6 space-y-10 bg-[#FF0000] flex lg:flex-row flex-col items-center justify-between">
         <div className="flex flex-col text-white gap-2 leading-[23.84px] font-normal h-[100px]">
           <span className="lg:text-[15px] lg:leading-[35.76px] text-[14px] leading-[21px] font-normal">
             TEDxBowen 2024
@@ -58,9 +60,7 @@ const CountDown: React.FC = () => {
           </p>
         </div>
         <div className="lg:w-[400px] lg:h-[130px] w-[350px] p-6 rounded-md bg-white">
-          <h1 className="text-right leading-[18px] text-[12px]">
-            Countdown Timer:
-          </h1>
+          <h1 className="text-right leading-[18px] text-[12px]">Countdown Timer:</h1>
           <div className="flex justify-between mt-1">
             <h3 className="text-[#FF0000] text-center font-bold">
               {timeLeft.days} <span className="block">Days</span>
