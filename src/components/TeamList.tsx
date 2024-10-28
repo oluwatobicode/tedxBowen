@@ -1,4 +1,12 @@
-const TeamList = ({ el }) => {
+interface excoProp {
+  el: {
+    pic: string;
+    name: string;
+    position: string;
+  };
+}
+
+const TeamList = ({ el }: excoProp) => {
   return (
     <div className="flex flex-row items-center justify-center">
       <div className="flex flex-col items-center justify-center mb-10">
