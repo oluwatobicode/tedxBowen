@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 
-const CountDown = () => {
-  const calculateTimeLeft = () => {
-    const eventDate = new Date("2024-11-30T00:00:00");
-    const now = new Date();
-    const difference = eventDate - now;
+interface TimeLeft {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
 
-    let timeLeft = {};
+const CountDown: React.FC = () => {
+  const calculateTimeLeft = (): TimeLeft => {
+    const eventDate: Date = new Date("2024-11-30T00:00:00");
+    const now: Date = new Date();
+    const difference: number = eventDate.getTime() - now.getTime();
+
+    let timeLeft: Partial<TimeLeft> = {};
 
     if (difference > 0) {
       timeLeft = {
@@ -17,17 +24,23 @@ const CountDown = () => {
       };
     }
 
-    return timeLeft;
+    return {
+      days: timeLeft.days || 0,
+      hours: timeLeft.hours || 0,
+      minutes: timeLeft.minutes || 0,
+      seconds: timeLeft.seconds || 0
+    };
   };
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const timer: NodeJS.Timeout = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    return () => clearInterval(timer); // Cleanup the interval when the component unmounts
+    // Cleanup the interval when the component unmounts
+    return () => clearInterval(timer);
   }, []);
 
   return (
@@ -44,23 +57,22 @@ const CountDown = () => {
             COMING TO THE STREET OF BOWEN UNIVERSITY
           </p>
         </div>
-        <div className="lg:w-[400px] lg:h-[130px] w-[350px]   p-6 rounded-md bg-white">
+        <div className="lg:w-[400px] lg:h-[130px] w-[350px] p-6 rounded-md bg-white">
           <h1 className="text-right leading-[18px] text-[12px]">
             Countdown Timer:
           </h1>
           <div className="flex justify-between mt-1">
             <h3 className="text-[#FF0000] text-center font-bold">
-              {timeLeft.days || 0} <span className="block">Days</span>
+              {timeLeft.days} <span className="block">Days</span>
             </h3>
             <h3 className="text-[#FF0000] text-center font-bold">
-              {timeLeft.hours || 0} <span className="block">Hours</span>
+              {timeLeft.hours} <span className="block">Hours</span>
             </h3>
             <h3 className="text-[#FF0000] text-center font-bold">
-              {timeLeft.minutes || 0} <span className="block">Minutes</span>
+              {timeLeft.minutes} <span className="block">Minutes</span>
             </h3>
-
             <h3 className="text-[#FF0000] text-center font-bold">
-              {timeLeft.seconds || 0} <span className="block">Seconds</span>
+              {timeLeft.seconds} <span className="block">Seconds</span>
             </h3>
           </div>
         </div>
