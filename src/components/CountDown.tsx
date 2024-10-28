@@ -42,7 +42,7 @@ const CountDown: React.FC = () => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    return () => clearInterval(timer); // Cleanup the interval when the component unmounts
+    return () => clearInterval(timer);
   }, []);
 
   return (
@@ -60,7 +60,9 @@ const CountDown: React.FC = () => {
           </p>
         </div>
         <div className="lg:w-[400px] lg:h-[130px] w-[350px] p-6 rounded-md bg-white">
-          <h1 className="text-right leading-[18px] text-[12px]">Countdown Timer:</h1>
+          <h1 className="text-right leading-[18px] text-[12px] lg:text-[18px] mb-2">
+            Countdown Timer:
+          </h1>
           <div className="flex justify-between mt-1">
             <h3 className="text-[#FF0000] text-center font-bold">
               {timeLeft.days} <span className="block">Days</span>

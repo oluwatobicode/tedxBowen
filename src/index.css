@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 .hero {
-  background-image: url("/assets/hero.png");
+  background-image: url("/assets/hero-mobile-screen.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
