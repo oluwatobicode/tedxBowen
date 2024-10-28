@@ -4,7 +4,7 @@ import { FaInstagram, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
     <footer className="bg-white w-full flex flex-col items-center justify-center">
-      <div className="flex md:flex-row flex-col items-center justify-between gap-10 p-5 md:p-10 w-[400px]  md:w-[800px]">
+      <div className="flex md:flex-row flex-col items-center justify-between gap-10 p-5 md:p-10 w-[370px]  md:w-[800px]">
         <div className=" ">
           <img src="/assets/tedxxBowenLogo.jpg" className="w-[250px]" alt="" />
         </div>
