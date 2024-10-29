@@ -22,10 +22,7 @@ const TicketCheck = () => {
           </h1>
 
           <h1 className="flex flex-row items-center gap-5  text-white lg:text-[25px] text-[18px] leading-[18.42px] font-normal lg:leading-[44.21px]  w-full">
-            <a
-              target="blank"
-              href="https://docs.google.com/forms/d/e/1FAIpQLScYQQh3LoZ5B71xhOvkyFECFUugI0BD6SilPJ1Ebd_JeHhIAw/viewform?usp=sf_link"
-            >
+            <a target="blank" href="https://forms.gle/E5viVdYfNQkXEQVX6 ">
               BUTH,Ogbomoso Campus.
             </a>
             <FiArrowUpRight />
