@@ -11,7 +11,7 @@ const Team = () => {
           </h1>
         </div>
 
-        <div className="mt-5 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+        <div className="mt-5 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mb-[10rem]">
           {team.map((el, i) => (
             <TeamList el={el} key={i} />
           ))}
